@@ -1,0 +1,59 @@
+Problem Statement:
+Given an array of integers remove the duplicate element
+
+Sample input: [3, 5, 7, 4, 3, 8, 5, 6]
+Sample output: [3, 5, 7, 4, 8, 6]
+
+Algorithm:
+Step 1: For each element in the given array
+            1.1 compare ith element with i+1 to n-1 th element
+            1.2 If any of them is equal to ith element then remove it from the array
+            1.3 otherwise move to the next element
+Step 2 : Return the modified array
+
+Aptitude problem for pipes in indiaBix.com
+
+3)
+A pump can fill the tank in 2 hours
+p can fill in 2 hours
+l can drain in x hours
+
+actual time to fill the tank is 7/3 hours
+in 1 hour 3/7 of the tank is filled
+
+in 1 hour p can fill 1/2 of the tank
+in 1 hour l can drain 1/x of the tank
+
+1/2 - 1/x = 3/7
+-1/x = 3/7 - 1/2
+-1/x = -1/14
+x = 14
+
+
+2) A => 5 hours
+   B => 6 hours
+   c => empty 12 hours
+   1 hour A => 1/5, B => 1/6, c => -1/12
+	1 hour toatal => 1/5 + 1/6 - 1/12 => 17/60
+	1 hour = 17/60
+	x hour = 1
+	x = 60/17=> 3 9/17
+3) A => 2 hours
+   l => x hours(empty)
+   total => 2 1/3
+   1 hour A=> 1/2, l => -1/x, total => 3/7
+	1/2 - 1/x = 3/7
+
+4) A => 37 1/2 minutes
+   B => 45 minutes
+	1 minute A => 2/75, B => 1/45
+	1 minute total => A + B
+	30 minute total => 30A + 30B
+	B is turned off after x minutes
+	30A + xB = 1
+	XB	= 1 - 60/75 => 1 - 4/5 => 1/5
+	XB = 1/5
+	X * 1 / 45 = 1/5
+	x / 45 = 1/5
+	x = 1 / 5 * 45
+	x = 9
