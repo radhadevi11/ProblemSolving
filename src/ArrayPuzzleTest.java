@@ -6,6 +6,10 @@ import java.util.Arrays;
 
 
 public class ArrayPuzzleTest {
+    static
+    {
+        System.out.println("static block: Runs when class is loaded");
+    }
     @Test
     public void testRemoveDuplicate(){
         int[] numbers = {1,2,5,2,1,3};
@@ -43,5 +47,21 @@ public class ArrayPuzzleTest {
 
         assertArrayEquals(expected, actual);
 
+    }
+
+    @Test
+    public void testRemoveDuplicateUsingMap() {
+        int[] numbers = {1,2,2,5,2,1,3,3};
+        int[] expected = {1,2,5,3};
+        ArrayPuzzle arrayPuzzle = new ArrayPuzzle();
+
+        int[] actual = arrayPuzzle.removeDuplicateUsingMap(numbers);
+        System.out.println("length="+actual.length);
+        for(int i : actual){
+            System.out.println(i);
+        }
+
+
+        assertArrayEquals(expected, actual);
     }
 }
