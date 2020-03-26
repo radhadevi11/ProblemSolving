@@ -7,6 +7,7 @@ public class Queue {
     private List<Integer> numbers = new ArrayList<>();
     private int head = -1;
     private int tail = -1;
+    private final int CAPACITY = 30;
 
     public Queue() {
     }
@@ -17,6 +18,10 @@ public class Queue {
 
      int getTail() {
         return tail;
+    }
+
+    public int getCAPACITY() {
+        return CAPACITY;
     }
 
     public Queue(List<Integer> numbers)  { //For Test purpose
