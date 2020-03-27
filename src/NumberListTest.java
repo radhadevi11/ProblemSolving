@@ -22,7 +22,7 @@ public class NumberListTest {
         node4.setNextNode(node5);
         node5.setNextNode(node6);
 
-        Map<NumberList, Integer> numberListIntegerMap = head1.populateMap(head1);
+        Map<NumberList, Integer> numberListIntegerMap = head1.populateMap();
 
         boolean actual = currentNode.isExpectedPair(currentNode, numberListIntegerMap, 15);
 
@@ -47,7 +47,7 @@ public class NumberListTest {
         node4.setNextNode(node5);
         node5.setNextNode(node6);
 
-        Map<NumberList, Integer> numberListIntegerMap = head1.populateMap(head1);
+        Map<NumberList, Integer> numberListIntegerMap = head1.populateMap();
 
         boolean actual = currentNode.isExpectedPair(currentNode, numberListIntegerMap, 15);
 
@@ -72,7 +72,7 @@ public class NumberListTest {
         node4.setNextNode(node5);
         node5.setNextNode(node6);
 
-        Map<NumberList, Integer> numberListIntegerMap = head1.populateMap(head1);
+        Map<NumberList, Integer> numberListIntegerMap = head1.populateMap();
 
         boolean actual = currentNode.isExpectedPair(currentNode, numberListIntegerMap, 15);
 

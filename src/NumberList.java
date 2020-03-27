@@ -23,7 +23,7 @@ class NumberList{
     }
 
 
-    Map<NumberList, Integer> populateMap(NumberList head){
+    Map<NumberList, Integer> populateMap(){
         /*
         ALGORITHM:
         Step 1: For each node from tempNode to lastNode
@@ -31,7 +31,7 @@ class NumberList{
         Step 2: return map
          */
         Map <NumberList, Integer> numberListMap = new HashMap<>();
-        NumberList tempNode = head;
+        NumberList tempNode = this;
         while (tempNode != null){
             numberListMap.put(tempNode, tempNode.getValue());
             tempNode = tempNode.getNextNode();
@@ -51,7 +51,7 @@ class NumberList{
 
          */
         int count = 0;
-        Map<NumberList, Integer> numberListMap = populateMap(this);
+        Map<NumberList, Integer> numberListMap = populateMap();
         NumberList currentNode = head2;
         while (currentNode != null){
             if(isExpectedPair(currentNode, numberListMap, x)){
