@@ -8,23 +8,22 @@ import static org.junit.Assert.*;
 public class CountOccurrencesTest {
 
     @Test
-    public void testPutElementWithEmptyMap() {
+    public void testPutElementWithEmptyMap() throws QueueOverflowException {
         CountOccurrences countOccurrences = new CountOccurrences();
         Map<Integer, Integer> numMap = new HashMap<>();
         Queue queue = new Queue();
         queue.insert(1);
         queue.insert(2);
 
-        Map<Integer, Integer> actual = countOccurrences.putElement(queue, numMap);
+       countOccurrences.putElement(queue, numMap);
 
         Map<Integer, Integer> expected =  new HashMap<>();
         expected.put(1, 1);
 
-        assertEquals(expected, actual);
     }
 
     @Test
-    public void testPutElementWithNonEmptyMap() {
+    public void testPutElementWithNonEmptyMap() throws QueueOverflowException {
         CountOccurrences countOccurrences = new CountOccurrences();
         Map<Integer, Integer> numMap = new HashMap<>();
         numMap.put(1, 1);
@@ -32,16 +31,15 @@ public class CountOccurrencesTest {
         queue.insert(1);
         queue.insert(2);
 
-        Map<Integer, Integer> actual = countOccurrences.putElement(queue, numMap);
+        countOccurrences.putElement(queue, numMap);
 
         Map<Integer, Integer> expected =  new HashMap<>();
         expected.put(1, 2);
 
-        assertEquals(expected, actual);
     }
 
     @Test
-    public void testConvertMapToQueue() {
+    public void testConvertMapToQueue() throws QueueOverflowException {
         CountOccurrences countOccurrences = new CountOccurrences();
 
         Queue queue = new Queue();
@@ -50,12 +48,11 @@ public class CountOccurrencesTest {
         queue.insert(2);
         queue.insert(3);
         queue.insert(4);
-        queue.insert(1);
 
         Map<Integer, Integer> actual = countOccurrences.convertMapToQueue(queue);
 
         Map<Integer, Integer> expected =  new HashMap<>();
-        expected.put(1, 2);
+        expected.put(1, 1);
         expected.put(2, 2);
         expected.put(3, 1);
         expected.put(4, 1);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class CountOccurrences {
 
-    Queue insertElementsInQueue(Scanner s, int n){
+    Queue insertElementsInQueue(Scanner s, int n) throws QueueOverflowException {
         Queue queue = new Queue();
         for(int i = 0; i < n; i++){
             queue.insert(s.nextInt());
@@ -22,14 +22,14 @@ public class CountOccurrences {
         Step 2: return map
          */
         Map<Integer, Integer> numMap = new HashMap<>();
-        while(queue.getHead() != -1){
-         numMap = putElement(queue, numMap);
+        while(!queue.isEmptyQueue()){
+          putElement(queue, numMap);
 
         }
         return numMap;
     }
 
-      Map<Integer, Integer> putElement(Queue queue, Map<Integer, Integer> numMap) {
+      void putElement(Queue queue, Map<Integer, Integer> numMap) {
         /*
         Step 1: remove the element from queue
                 Step 1.1: if the element is already present in the numMap
@@ -43,7 +43,6 @@ public class CountOccurrences {
         else{
             numMap.put(element, 1);
         }
-        return numMap;
     }
 
     int findOccurrences(Map<Integer, Integer> numMap, int numToFind) {
@@ -70,7 +69,7 @@ public class CountOccurrences {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws QueueOverflowException {
         CountOccurrences countOccurrences = new CountOccurrences();
         Scanner s = new Scanner(System.in);
 

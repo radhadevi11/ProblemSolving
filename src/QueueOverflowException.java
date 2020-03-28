@@ -1,6 +1,6 @@
-public class QueueOverflowException extends Throwable {
+public class QueueOverflowException extends Exception {
 
-    public QueueOverflowException(Queue queue, Exception e){
-        super("Queue is full, can not insert element, capacity : "+ queue.getCAPACITY(), e);
+    public QueueOverflowException(Queue queue, int element){
+        super("Queue is full, can not insert element:"+element+" Queue capacity : "+ queue.getCAPACITY());
     }
 }

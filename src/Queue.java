@@ -5,63 +5,43 @@ import java.util.Optional;
 
 public class Queue {
     private List<Integer> numbers = new ArrayList<>();
-    private int head = -1;
-    private int tail = -1;
-    private final int CAPACITY = 30;
+    private final int CAPACITY = 5;
 
     public Queue() {
-    }
-
-     int getHead() {
-        return head;
-    }
-
-     int getTail() {
-        return tail;
     }
 
     public int getCAPACITY() {
         return CAPACITY;
     }
 
-    public Queue(List<Integer> numbers)  { //For Test purpose
-        this.numbers = numbers;
-    }
+
 
     public List<Integer> getNumbers() {
         return numbers;
     }
 
     boolean isEmptyQueue(){
-        return this.head == -1 && this.tail == -1;
+        return this.numbers.isEmpty();
     }
 
-    boolean isLastElement(){
-        return this.head == this.tail;
+
+     boolean isQueueFull() {
+
+        return (this.numbers.size() == CAPACITY ? true : false);
     }
 
-     void addElement(int element) {
-        this.tail++;
-        numbers.add(this.tail, element);
-    }
-
-    public void insert(int element){
+    public void insert(int element) throws QueueOverflowException{
         /*ALGORITHM:
-                Step 1: if queue is empty
-                            1.1 : increment head by 1
-                            1.2 : add the element to queue
+                Step 1: if queue is not full empty
+                            1.1 : add element in the queue
                 Step 2: Otherwise
-                            2.1:  add the element to queue
+                            2.1:  throw QueueOverflowException
          */
-        if(isEmptyQueue()){
-            this.head++;
-            addElement(element);
+        if(! isQueueFull()){
+            numbers.add(element);
+        }else{
+            throw new QueueOverflowException(this, element);
         }
-        else {
-            addElement(element);
-        }
-
-
     }
 
 
@@ -70,40 +50,23 @@ public class Queue {
         /*ALGORITHM:
             Step 1: If queue is empty
                         1.1: return empty
-            Step 2: If it is last element
-                        2.1: get last element and return
-            Step 3: Otherwise
-                        3.1: get the element, increment head and return
+            Step 2: Otherwise
+                        2.1: get the element
+                        2.2: remove the element
+                        2.3: return removed element
+
          */
 
         if(isEmptyQueue()){
             return Optional.empty();
         }
-        if(isLastElement()){
-            return getLastElement();
-
-        }
-        Optional<Integer> element = getElement();
-        this.head++;
+        Optional<Integer> element = Optional.of(numbers.get(0));
+        numbers.remove(0);
         return element;
     }
 
-     Optional<Integer> getLastElement() {
-        /*
-        Step 1: get the element
-        Step 2: set head and tail to -1
-        Step 3: return element
 
-         */
-        Optional<Integer> element = getElement();
-        this.head = -1;
-        this.tail = -1;
-        return element;
-    }
 
-     Optional<Integer> getElement() {
-        return Optional.of(numbers.get(this.head));
-    }
 
     public    Optional<Integer> peek(){
         /*ALGORITHM:
@@ -115,7 +78,7 @@ public class Queue {
         if(isEmptyQueue()){
             return Optional.empty();
         }
-        return Optional.of(numbers.get(head));
+        return Optional.of(numbers.get(0));
     }
 
     @Override
@@ -130,6 +93,8 @@ public class Queue {
     public int hashCode() {
         return Objects.hash(numbers);
     }
+
+
 
 
 }
