@@ -8,22 +8,22 @@ import static org.junit.Assert.*;
 public class CountOccurrencesTest {
 
     @Test
-    public void testPutElementWithEmptyMap() throws QueueOverflowException {
+    public void testIsExistingElementWithEmptyMap() throws QueueOverflowException {
         CountOccurrences countOccurrences = new CountOccurrences();
         Map<Integer, Integer> numMap = new HashMap<>();
         Queue queue = new Queue();
         queue.insert(1);
         queue.insert(2);
 
-       countOccurrences.putElement(queue, numMap);
+        boolean actual = countOccurrences.isExistingElement(1, numMap);
 
-        Map<Integer, Integer> expected =  new HashMap<>();
-        expected.put(1, 1);
+        assertEquals(false, actual);
+
 
     }
 
     @Test
-    public void testPutElementWithNonEmptyMap() throws QueueOverflowException {
+    public void testIsExistingElementWithNonEmptyMap() throws QueueOverflowException {
         CountOccurrences countOccurrences = new CountOccurrences();
         Map<Integer, Integer> numMap = new HashMap<>();
         numMap.put(1, 1);
@@ -31,11 +31,9 @@ public class CountOccurrencesTest {
         queue.insert(1);
         queue.insert(2);
 
-        countOccurrences.putElement(queue, numMap);
+        boolean actual = countOccurrences.isExistingElement(1, numMap);
 
-        Map<Integer, Integer> expected =  new HashMap<>();
-        expected.put(1, 2);
-
+        assertEquals(true, actual);
     }
 
     @Test
@@ -49,7 +47,7 @@ public class CountOccurrencesTest {
         queue.insert(3);
         queue.insert(4);
 
-        Map<Integer, Integer> actual = countOccurrences.convertMapToQueue(queue);
+        Map<Integer, Integer> actual = countOccurrences.convertQueueToMap(queue);
 
         Map<Integer, Integer> expected =  new HashMap<>();
         expected.put(1, 1);

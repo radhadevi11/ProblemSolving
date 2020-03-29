@@ -4,7 +4,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class NumberListTest {
+public class CountPairsOfNodeTest {
     @Test
     public void testIsExpectedPair(){
         NumberList currentNode = new NumberList(11);
@@ -22,9 +22,11 @@ public class NumberListTest {
         node4.setNextNode(node5);
         node5.setNextNode(node6);
 
-        Map<Integer, Integer> numberListIntegerMap = head1.populateMap();
+        CountPairsOfNode pairs = new CountPairsOfNode();
 
-        boolean actual = currentNode.isExpectedPair(currentNode, numberListIntegerMap, 15);
+        Map<Integer, Integer> numberListIntegerMap = pairs.populateMap(head1);
+
+        boolean actual = pairs.isExpectedPair(currentNode, numberListIntegerMap, 15);
 
         assertEquals(true, actual);
 
@@ -47,9 +49,11 @@ public class NumberListTest {
         node4.setNextNode(node5);
         node5.setNextNode(node6);
 
-        Map<Integer, Integer> numberListIntegerMap = head1.populateMap();
+        CountPairsOfNode pairs = new CountPairsOfNode();
 
-        boolean actual = currentNode.isExpectedPair(currentNode, numberListIntegerMap, 15);
+        Map<Integer, Integer> numberListIntegerMap = pairs.populateMap(head1);
+
+        boolean actual = pairs.isExpectedPair(currentNode, numberListIntegerMap, 15);
 
         assertEquals(false, actual);
 
@@ -72,9 +76,11 @@ public class NumberListTest {
         node4.setNextNode(node5);
         node5.setNextNode(node6);
 
-        Map<Integer, Integer> numberListIntegerMap = head1.populateMap();
+        CountPairsOfNode pairs = new CountPairsOfNode();
 
-        boolean actual = currentNode.isExpectedPair(currentNode, numberListIntegerMap, 15);
+        Map<Integer, Integer> numberListIntegerMap = pairs.populateMap(head1);
+
+        boolean actual = pairs.isExpectedPair(currentNode, numberListIntegerMap, 15);
 
         assertEquals(false, actual);
 
@@ -109,7 +115,9 @@ public class NumberListTest {
         node24.setNextNode(node25);
         node25.setNextNode(node26);
 
-        int actual = head1.countPairsWhoseSumISEqualToX(head2, 15);
+        CountPairsOfNode pairs = new CountPairsOfNode();
+
+        int actual = pairs.countPairsWhoseSumISEqualToX(head1, head2, 15);
 
         assertEquals(4, actual);
 

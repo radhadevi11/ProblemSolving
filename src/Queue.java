@@ -27,7 +27,7 @@ public class Queue {
 
      boolean isQueueFull() {
 
-        return (this.numbers.size() == CAPACITY ? true : false);
+        return this.numbers.size() == CAPACITY;
     }
 
     public void insert(int element) throws QueueOverflowException{

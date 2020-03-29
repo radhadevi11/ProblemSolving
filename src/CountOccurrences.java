@@ -1,11 +1,13 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Scanner;
 
 public class CountOccurrences {
 
-    Queue insertElementsInQueue(Scanner s, int n) throws QueueOverflowException {
+    Queue insertElementsInQueue() throws QueueOverflowException {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+
         Queue queue = new Queue();
         for(int i = 0; i < n; i++){
             queue.insert(s.nextInt());
@@ -14,35 +16,43 @@ public class CountOccurrences {
 
     }
 
-    Map<Integer, Integer> convertMapToQueue(Queue queue){
+    Map<Integer, Integer> convertQueueToMap(Queue queue){
         /*
         Step 0: create map called numMap
         Step 1: for each element in the queue
-                    1.2 : putElement into queue
+                    1.2 : remove the element from queue
+                    1.3 : if isExistingElement
+                            1.3.1: put element as a key and value as 1 in numMap
+                    1.2 : Otherwise
+                            1.2.1: get the element from the map
+                            1.2.2: increment it's value by 1
+                            1.2.3: replace it's new  value in the map
         Step 2: return map
          */
         Map<Integer, Integer> numMap = new HashMap<>();
         while(!queue.isEmptyQueue()){
-          putElement(queue, numMap);
+          queue.remove().ifPresent((element) -> {
+              if(isExistingElement(element, numMap)){
+                  numMap.replace(element, numMap.get(element) + 1);
+              } else {
+                  numMap.put(element, 1);
+              }
+          });
 
         }
         return numMap;
     }
 
-      void putElement(Queue queue, Map<Integer, Integer> numMap) {
+      boolean isExistingElement(int num, Map<Integer, Integer> numMap) {
         /*
         Step 1: remove the element from queue
                 Step 1.1: if the element is already present in the numMap
-                                1.1.1: increment it's value by 1
-                Step 1.2: put element as a key and value as 1 in numMap
+                                1.1.1:
+                Step 1.2:
          */
-        Integer element = (queue.remove()).get();
-        if(numMap.containsKey(element)){
-            numMap.replace(element, numMap.get(element)+1);
-        }
-        else{
-            numMap.put(element, 1);
-        }
+
+         return numMap.containsKey(num);
+
     }
 
     int findOccurrences(Map<Integer, Integer> numMap, int numToFind) {
@@ -57,9 +67,7 @@ public class CountOccurrences {
         }
         return -1;
     }
-    int getNorM(Scanner s){
-        return s.nextInt();
-    }
+
 
     void printOccurrences(int m, Scanner s, Map<Integer, Integer> numMap){
         for (int i = 0; i < m; i++){
@@ -73,11 +81,10 @@ public class CountOccurrences {
         CountOccurrences countOccurrences = new CountOccurrences();
         Scanner s = new Scanner(System.in);
 
-        int n = countOccurrences.getNorM(s);
-        Queue queue = countOccurrences.insertElementsInQueue(s, n);
-        Map<Integer, Integer> QueueMap = countOccurrences.convertMapToQueue(queue);
+        Queue queue = countOccurrences.insertElementsInQueue();
+        Map<Integer, Integer> QueueMap = countOccurrences.convertQueueToMap(queue);
 
-        int m = countOccurrences.getNorM(s);
+        int m = s.nextInt();
         countOccurrences.printOccurrences(m, s, QueueMap);
 
 
