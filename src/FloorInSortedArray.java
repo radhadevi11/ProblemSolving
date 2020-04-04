@@ -13,7 +13,7 @@ public class FloorInSortedArray {
                     2.2: if the element is not LessThanOrEqualToX and it is the very first element
                             2.2.1: return -1
                     2.3: if the element is not LessThanOrEqualToX
-                            2.3.1: return the previous element's position
+                            2.3 .1: return the previous element's position
          */
         for(int i = 0; i < array.length; i++){
             if(array[i] == x){
