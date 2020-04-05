@@ -8,10 +8,6 @@ import static org.junit.Assert.*;
 
 public class ChooseRestaurantsTest {
 
-    @Test
-    public void getCommonRestaurantsWithLeastIndex() {
-
-    }
 
     @Test
     public void populateRestaurantList() {

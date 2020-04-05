@@ -27,37 +27,46 @@ public class ChooseRestaurants {
 
         /*
         Step 1: Create a resultList
-        Step 2: set minRestaurantIndex as MAX_VALUE
+        Step 2: set minIndexSoFar as MAX_VALUE
         Step 3: For each restaurants in restaurants2
             3.1: if the restaurant is present in the map
                     3.1.1: add the index of both restaurant and assign it to sumOfIndex
-                    3.1.2: if sumOfIndex  is equal to minRestaurantIndex
+                    3.1.2: if sumOfIndex  is equal to minIndexSoFar
                                 3.1.2.1: add the restaurant name to resultList
-                    3.1.3: if sumOfIndex is less than minRestaurantIndex
+                    3.1.3: if sumOfIndex is less than minIndexSoFar
                                 3.1.3.1: remove all the elements from resultList
                                 3.1.3.2: add the restaurant name to resultList
-                                3.1.3.3: assign sumOfIndex to minRestaurantIndex
+                                3.1.3.3: assign sumOfIndex to minIndexSoFar
 
          */
         List<String> resultList = new ArrayList<>();
-        int minRestaurantIndex = Integer.MAX_VALUE;
-        int sumOfIndex = 0;
+        int minIndexSoFar = Integer.MAX_VALUE;
         for (int i = 0; i < restaurants2.size(); i++) {
-            String curRestaurent = restaurants2.get(i);
-            if (restaurantsWithIndex.containsKey(curRestaurent)) {
-                sumOfIndex = i + restaurantsWithIndex.get(curRestaurent);
-                if (sumOfIndex == minRestaurantIndex) {
-                    resultList.add(curRestaurent);
-                    minRestaurantIndex = sumOfIndex;
+
+            String curRestaurant = restaurants2.get(i);
+            if (restaurantsWithIndex.containsKey(curRestaurant)) {
+                int sumOfIndex = i + restaurantsWithIndex.get(curRestaurant);
+                //sumOfIndex  is equal to minIndexSoFar
+                if (sumOfIndex == minIndexSoFar) {
+                    resultList.add(curRestaurant);
+                    //minIndexSoFar = getSumOfMinIndex(resultList, sumOfIndex, curRestaurant);
                 }
-                if (sumOfIndex < minRestaurantIndex) {
-                    resultList.removeAll(resultList);
-                    resultList.add(curRestaurent);
-                    minRestaurantIndex = sumOfIndex;
+                //sumOfIndex is less than minIndexSoFar
+                if (sumOfIndex < minIndexSoFar) {
+                    resultList.clear();
+                    resultList.add(curRestaurant);
+                    minIndexSoFar = sumOfIndex;
                 }
             }
         }
         return resultList;
+    }
+
+    private int getSumOfMinIndex(List<String> resultList, int sumOfIndex, String curRestaurent) {
+        int minRestaurantIndex;
+        resultList.add(curRestaurent);
+        minRestaurantIndex = sumOfIndex;
+        return minRestaurantIndex;
     }
 
 }
