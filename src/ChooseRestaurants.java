@@ -20,6 +20,12 @@ public class ChooseRestaurants {
         Step 3: Return resultList
 
          */
+        if(restaurants1 == null || restaurants2 == null){
+            throw new IllegalArgumentException("Not a valid Input");
+        }
+        if( restaurants1.isEmpty() || restaurants2.isEmpty()){
+            throw new IllegalArgumentException("One of the inputs is empty");
+        }
         Map<String, Integer> restaurantsWithIndex = convertListToMap(restaurants1);
         return populateRestaurantList(restaurantsWithIndex, restaurants2);
     }
@@ -62,11 +68,5 @@ public class ChooseRestaurants {
         return resultList;
     }
 
-    private int getSumOfMinIndex(List<String> resultList, int sumOfIndex, String curRestaurent) {
-        int minRestaurantIndex;
-        resultList.add(curRestaurent);
-        minRestaurantIndex = sumOfIndex;
-        return minRestaurantIndex;
-    }
 
 }

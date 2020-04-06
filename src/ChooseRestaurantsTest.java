@@ -77,4 +77,31 @@ public class ChooseRestaurantsTest {
 
         assertThat(actual).isEqualTo(new ArrayList<String>(Arrays.asList("Tapioca Express", "Shogun")));
     }
+    @Test
+    public void testGetCommonRestaurantWithLeastIndexWithNullList() {
+        ChooseRestaurants chooseRestaurants = new ChooseRestaurants();
+
+        List<String> restaurants1 = new ArrayList<>(
+                Arrays.asList("Shogun", "Tapioca Express", "Burger King", "KFC"));
+
+        List<String> restaurants2 = null;
+
+        assertThatThrownBy  ( () -> chooseRestaurants.getCommonRestaurantsWithLeastIndex(restaurants1,restaurants2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Not a valid Input");
+    }
+
+    @Test
+    public void testGetCommonRestaurantWithLeastIndexWithEmptyList() {
+        ChooseRestaurants chooseRestaurants = new ChooseRestaurants();
+
+        List<String> restaurants1 = new ArrayList<>(
+                Arrays.asList("Shogun", "Tapioca Express", "Burger King", "KFC"));
+
+        List<String> restaurants2 = new ArrayList<>();
+
+        assertThatThrownBy  ( () -> chooseRestaurants.getCommonRestaurantsWithLeastIndex(restaurants1,restaurants2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("One of the inputs is empty");
+    }
 }
