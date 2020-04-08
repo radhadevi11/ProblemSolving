@@ -103,7 +103,7 @@ public class ComputePondSizes {
         Map<Position, Integer> positionMap = new HashMap<>();
         for(int i = 0; i < rowSize; i++){
             for (int j = 0; j < colSize; j++){
-                
+
                 Position currentPosition = new Position(i, j);
                 if(isValidZero(currentPosition, rowSize, colSize, positionMap, plotOfLand)){
                     positionMap.put(currentPosition, 0);

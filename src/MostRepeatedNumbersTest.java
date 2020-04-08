@@ -73,4 +73,28 @@ public class MostRepeatedNumbersTest {
         assertThat(actual).isEqualTo(new ArrayList<>(Arrays.asList(3, 4)));
 
     }
+
+    @Test
+    public void testKTimesRepeatedNumList() {
+        MostRepeatedNumbers repeatedNumbers = new MostRepeatedNumbers();
+        Map<Integer, Integer> numMapWithOccurrences = new HashMap<>();
+        numMapWithOccurrences.put(1,1);
+        numMapWithOccurrences.put(2,2);
+        numMapWithOccurrences.put(3,4);
+        numMapWithOccurrences.put(4,1);
+
+        List<Integer> actual = repeatedNumbers.getKTimesRepeatedNumList(numMapWithOccurrences, 2);
+
+        assertThat(actual).isEqualTo(new ArrayList<>(Arrays.asList(2, 3)));
+    }
+
+    @Test
+    public void testGetKTimesRepeatedNumbers() {
+        MostRepeatedNumbers repeatedNumbers = new MostRepeatedNumbers();
+        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 2, 3, 5, 3));
+
+        List<Integer> actual = repeatedNumbers.getKTimesRepeatedNumbers(numbers, 2);
+
+        assertThat(actual).isEqualTo(new ArrayList<>(Arrays.asList(2, 3)));
+    }
 }

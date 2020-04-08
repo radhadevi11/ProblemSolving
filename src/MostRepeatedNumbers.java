@@ -24,25 +24,17 @@ public class MostRepeatedNumbers {
         for (Integer key : numMapWithOccurrence.keySet()){
 
             Integer value = numMapWithOccurrence.get(key);
-            if(isValueEqualToMaxOccur(maxOccur, value)){
+            if(value == (maxOccur)){
                 resultList.add(key);
                 maxOccur = value;
             }
-            if(isValueLessThanMaxOccur(maxOccur, value)){
+            if(value > maxOccur){
                 resultList.clear();
                 resultList.add(key);
                 maxOccur = value;
             }
         }
         return resultList;
-    }
-
-    private boolean isValueLessThanMaxOccur(int maxOccur, Integer value) {
-        return value >  maxOccur;
-    }
-
-    private boolean isValueEqualToMaxOccur(int maxOccur, Integer value) {
-        return value == (maxOccur);
     }
 
     Map<Integer, Integer> convertListToMap(List<Integer> numbers){
@@ -59,8 +51,33 @@ public class MostRepeatedNumbers {
     }
 
     List<Integer> getMostRepeatedNumbers(List<Integer> numbers){
+
         Map<Integer, Integer> numMapWithOccurrences = convertListToMap(numbers);
         return getMostRepeatedNumList(numMapWithOccurrences);
 
+    }
+    List<Integer> getKTimesRepeatedNumbers(List<Integer> numbers, int k) {
+        Map<Integer, Integer> numMapWithOccurrences = convertListToMap(numbers);
+        return getKTimesRepeatedNumList(numMapWithOccurrences, k);
+    }
+
+     List<Integer> getKTimesRepeatedNumList(Map<Integer, Integer> numMapWithOccurrences, int k) {
+
+        /*
+        Step 0: create a resultList
+        Step 1: For each value in the map
+                1.1: if the value is greater than or equal to k
+                        1.1.1: Add key in the resultList
+        Step 2: return resultList
+
+         */
+        List<Integer> resultList = new ArrayList<>();
+        for(Integer key : numMapWithOccurrences.keySet()) {
+            Integer value = numMapWithOccurrences.get(key);
+            if(value >= k){
+                resultList.add(key);
+            }
+        }
+        return resultList;
     }
 }

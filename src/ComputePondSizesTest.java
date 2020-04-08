@@ -121,5 +121,15 @@ public class ComputePondSizesTest {
 
         assertThat(actual).isEqualTo(new ArrayList<>(Arrays.asList(5)));
     }
+
+    @Test
+    public void testGetPondSizeListConnectedWithBothDirection(){
+        ComputePondSizes pondSizes = new ComputePondSizes();
+        int[][] plotOfLand = new int[][] {{1, 0, 1, 1}, {1, 0, 0, 0}, {0, 0, 0, 0}};
+
+        List<Integer> actual = pondSizes.getPondSizeList(plotOfLand, 3, 4);
+
+        assertThat(actual).isEqualTo(new ArrayList<>(Arrays.asList(8)));
+    }
 }
 
