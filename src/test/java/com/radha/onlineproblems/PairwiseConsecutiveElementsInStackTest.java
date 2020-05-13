@@ -23,11 +23,9 @@ public class PairwiseConsecutiveElementsInStackTest {
         numbers.push(2);
         numbers.push(1);
 
-        int actual = elements.populatePairDifferencesList(evenPAirDifferences, 2, numbers);
+       elements.findDifferenceAddToPairDiff(evenPAirDifferences, 2, 1);
 
-        assertThat(actual).isEqualTo(1);
         assertThat(evenPAirDifferences).containsExactly(2, 5, 1);
-        assertThat(numbers.peek()).isEqualTo(2);
 
     }
 
@@ -39,11 +37,9 @@ public class PairwiseConsecutiveElementsInStackTest {
         numbers.push(2);
         numbers.push(1);
 
-        int actual = elements.populatePairDifferencesList(evenPAirDifferences, 5, numbers);
+        elements.findDifferenceAddToPairDiff(evenPAirDifferences, 5, 1);
 
-        assertThat(actual).isEqualTo(1);
         assertThat(evenPAirDifferences).containsExactly(2, 5, 4);
-        assertThat(numbers.peek()).isEqualTo(2);
 
     }
 
@@ -56,11 +52,9 @@ public class PairwiseConsecutiveElementsInStackTest {
         numbers.push(2);
         numbers.push(1);
 
-        int actual = elements.populatePairDifferencesList(oddPairDifferences, 2, numbers);
+       elements.findDifferenceAddToPairDiff(oddPairDifferences, 2, 1);
 
-        assertThat(actual).isEqualTo(1);
         assertThat(oddPairDifferences).containsExactly(2, 5, 1);
-        assertThat(numbers.peek()).isEqualTo(2);
     }
 
     @Test
@@ -72,11 +66,9 @@ public class PairwiseConsecutiveElementsInStackTest {
         numbers.push(2);
         numbers.push(1);
 
-        int actual = elements.populatePairDifferencesList(oddPairDifferences, 5, numbers);
+        elements.findDifferenceAddToPairDiff(oddPairDifferences, 5, 1);
 
-        assertThat(actual).isEqualTo(1);
         assertThat(oddPairDifferences).containsExactly(2, 5, 4);
-        assertThat(numbers.peek()).isEqualTo(2);
     }
 
     @Test
