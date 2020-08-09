@@ -20,4 +20,7 @@ public class MergeString {
         }
         return result.append(bigString.substring(minLength)).toString();
     }
+
+    
+
 }

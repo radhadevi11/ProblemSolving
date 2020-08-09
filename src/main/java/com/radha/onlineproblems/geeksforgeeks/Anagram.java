@@ -26,7 +26,7 @@ public class Anagram {
         return isAnagram(word2, word1Characters);
     }
 
-    private boolean isAnagram(String word, Set<Character> characterSet) {
+     boolean isAnagram(String word, Set<Character> characterSet) {
         /*
         for each character in word
             if characterSet not contains character
